@@ -137,7 +137,7 @@ class CPDatasetTest(data.Dataset):
 
         # load parsing image
         parse_name = im_name.replace('.jpg', '.png')
-        im_parse_pil_big = Image.open(osp.join(self.data_path, 'image-parse-v3', parse_name))
+        im_parse_pil_big = Image.open(osp.join(self.data_path, 'image-parse', parse_name))
         im_parse_pil = transforms.Resize(self.fine_width, interpolation=0)(im_parse_pil_big)
         parse = torch.from_numpy(np.array(im_parse_pil)[None]).long()
         im_parse = self.transform(im_parse_pil.convert('RGB'))
