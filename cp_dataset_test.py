@@ -191,12 +191,12 @@ class CPDatasetTest(data.Dataset):
         
         # load pose points
         pose_name = im_name.replace('.jpg', '_rendered.png')
-        pose_map = Image.open(osp.join(self.data_path, 'openpose_img', pose_name))
+        pose_map = Image.open(osp.join(self.data_path, 'openpose-img', pose_name))
         pose_map = transforms.Resize(self.fine_width, interpolation=2)(pose_map)
         pose_map = self.transform(pose_map)  # [-1,1]
         
         pose_name = im_name.replace('.jpg', '_keypoints.json')
-        with open(osp.join(self.data_path, 'openpose_json', pose_name), 'r') as f:
+        with open(osp.join(self.data_path, 'openpose-json', pose_name), 'r') as f:
             pose_label = json.load(f)
             pose_data = pose_label['people'][0]['pose_keypoints_2d']
             pose_data = np.array(pose_data)
