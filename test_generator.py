@@ -225,7 +225,7 @@ def test(opt, test_loader, tocg, generator):
                                         (pose_map[i].cpu()/2 +0.5), (warped_cloth[i].cpu()/2 + 0.5), (agnostic[i].cpu()/2 + 0.5),
                                         (im[i]/2 +0.5), (output[i].cpu()/2 +0.5)],
                                         nrow=4)
-                unpaired_name = (inputs['c_name']['paired'][i].split('.')[0] + '_' + inputs['c_name'][opt.datasetting][i].split('.')[0] + '.png')
+                unpaired_name = (inputs['c_name']['unpaired'][i].split('.')[0] + '_' + inputs['c_name'][opt.datasetting][i].split('.')[0] + '.png')
                 save_image(grid, os.path.join(grid_dir, unpaired_name))
                 unpaired_names.append(unpaired_name)
                 
