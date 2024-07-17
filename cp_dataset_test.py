@@ -204,8 +204,8 @@ class CPDatasetTest(data.Dataset):
 
         
         # load densepose
-        densepose_name = im_name.replace('image', 'image-densepose')
-        densepose_map = Image.open(osp.join(self.data_path, 'openpose-img', pose_name))
+        densepose_name = im_name.replace('.jpg', '_rendered.png')
+        densepose_map = Image.open(osp.join(self.data_path, 'openpose-img', densepose_name))
         densepose_map = transforms.Resize(self.fine_width, interpolation=2)(densepose_map)
         densepose_map = self.transform(densepose_map)  # [-1,1]
         agnostic = self.get_agnostic(im_pil_big, im_parse_pil_big, pose_data)
