@@ -177,7 +177,7 @@ class CPDatasetTest(data.Dataset):
         parse_agnostic = torch.from_numpy(np.array(image_parse_agnostic)[None]).long()
         image_parse_agnostic = self.transform(image_parse_agnostic.convert('RGB'))
 
-        parse_agnostic_map = torch.FloatTensor(1, self.fine_height, self.fine_width, 3).zero_()
+        parse_agnostic_map = torch.FloatTensor(20, self.fine_height, self.fine_width).zero_()
         parse_agnostic_map = parse_agnostic_map.scatter_(0, parse_agnostic, 1.0)
         new_parse_agnostic_map = torch.FloatTensor(self.semantic_nc, self.fine_height, self.fine_width).zero_()
         for i in range(len(labels)):
